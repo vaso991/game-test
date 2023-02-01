@@ -2,7 +2,7 @@ import './style.css'
 import kaboom from 'kaboom';
 kaboom();
 
-loadSprite("misha", "/public/misha.png", {
+loadSprite("misha", "/misha.png", {
 	// The image contains 9 frames layed out horizontally, slice it into individual frames
 	sliceX: 10,
 	// Define animations
