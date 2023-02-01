@@ -3,30 +3,27 @@ import kaboom from 'kaboom';
 kaboom();
 
 loadSprite("misha", "/misha.png", {
-	// The image contains 9 frames layed out horizontally, slice it into individual frames
-	sliceX: 10,
+	sliceX: 30,
 	// Define animations
 	anims: {
 		"idle": {
-			// Starts from frame 0, ends at frame 3
-			from: 5,
-			to: 5,
+			from: 0,
+			to: 11,
 			// Frame per second
-			speed: 5,
+			speed: 12,
 			loop: true,
 		},
 		"run": {
-			from: 0,
-			to: 4,
-			speed: 10,
+			from: 12,
+			to: 29,
+			speed: 20,
 			loop: true,
 		},
-		// This animation only has 1 frame
 		"jump": {
-			from: 5,
-			to: 9,
+			from: 20,
+			to: 24,
 			speed: 4,
-			loop: false,
+			loop: true,
 		},
 	},
 })
@@ -43,6 +40,8 @@ const player = add([
 	area(),
 	body(),
 ])
+
+player.play('idle');
 
 add([
 	rect(width(), 24),
