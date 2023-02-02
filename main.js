@@ -26,10 +26,13 @@ loadSprite("misha", "/misha.png", {
 			loop: true,
 		},
 	},
-})
+});
+
+loadSprite('enemy', '/enemy.png');
+loadSound("explode", "/explode.mp3")
 
 const SPEED = 200
-const JUMP_FORCE = 350
+const JUMP_FORCE = 400
 
 gravity(640)
 
@@ -42,6 +45,28 @@ const player = add([
 ])
 
 player.play('idle');
+
+for (let i = 0; i < 3; i++) {
+	const x = rand(24, width() - 50);
+	const y = height() - 100;
+
+	add([
+		sprite("enemy"),
+		pos(x, y),
+		origin("center"),
+		area(),
+		body(),
+		"enemy",
+	]);
+}
+
+player.onCollide("enemy", (enemy, collision) => {
+	if (collision.isBottom()) {
+		addKaboom(enemy.pos)
+		play("explode")
+		destroy(enemy)
+	}
+})
 
 add([
 	rect(width(), 24),
