@@ -92,7 +92,7 @@ add([
 	solid(),
 ])
 
-onKeyPress("space", () => {
+onKeyPress("up", () => {
 	if (player.isGrounded()) {
 		player.jump(JUMP_FORCE)
 		player.play("jump")
