@@ -46,7 +46,7 @@ const player = add([
 
 player.play('idle');
 
-for (let i = 0; i < 3; i++) {
+const addNewRandomEnemy = () => {
 	const x = rand(24, width() - 50);
 	const y = height() - 100;
 
@@ -60,11 +60,16 @@ for (let i = 0; i < 3; i++) {
 	]);
 }
 
+for (let i = 0; i < 3; i++) {
+	addNewRandomEnemy();
+}
+
 player.onCollide("enemy", (enemy, collision) => {
 	if (collision.isBottom()) {
-		addKaboom(enemy.pos)
-		play("explode")
-		destroy(enemy)
+		addKaboom(enemy.pos);
+		play("explode");
+		destroy(enemy);
+		addNewRandomEnemy();
 	}
 })
 
