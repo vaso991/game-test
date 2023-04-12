@@ -65,7 +65,7 @@ for (let i = 0; i < 3; i++) {
 }
 
 player.onCollide("enemy", (enemy, collision) => {
-	if (collision.isBottom()) {
+	if (collision && collision.isBottom()) {
 		addKaboom(enemy.pos);
 		play("explode");
 		destroy(enemy);
